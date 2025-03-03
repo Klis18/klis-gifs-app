@@ -1,5 +1,5 @@
 <div  class="grid grid-cols-3 gap-4">
     @for(url of images(); track url){
-        <gif-list-item [imageUrl]="url"></gif-list-item>
+        <gif-list-item [imageUrl]="url.image"></gif-list-item>
     }
 </div>
