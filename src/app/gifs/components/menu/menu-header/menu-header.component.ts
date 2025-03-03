@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
-  selector: 'app-menu-header',
+  selector: 'gifs-menu-header',
   standalone: true,
   imports: [],
   templateUrl: './menu-header.component.html',
   styles: ``
 })
 export class MenuHeaderComponent {
-
+  env = environment;
 }

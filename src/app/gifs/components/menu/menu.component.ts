@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
+import { MenuHeaderComponent } from './menu-header/menu-header.component';
+import { MenuItemsComponent } from './menu-items/menu-items.component';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'gifs-menu',
   standalone: true,
-  imports: [],
+  imports: [
+    MenuHeaderComponent,
+    MenuItemsComponent
+  ],
   templateUrl: './menu.component.html',
   styles: ``
 })
 export class MenuComponent {
 
+ 
 }

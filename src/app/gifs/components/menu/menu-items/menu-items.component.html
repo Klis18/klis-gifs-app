@@ -1,1 +1,6 @@
-<p>menu-items works!</p>
+@for(item of menuItems; track item){
+    <a [routerLink]="item.route" routerLinkActive="bg-fuchsia-900" class="text-white px-8 py-4 mb-2 text-base block">
+        <span [class]="item.icon" class="text-white mr-2"></span>
+        {{item.itemName}}
+    </a>
+}
