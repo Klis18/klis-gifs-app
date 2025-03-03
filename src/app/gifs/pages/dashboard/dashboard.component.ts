@@ -10,7 +10,8 @@ import { RouterOutlet } from '@angular/router';
     RouterOutlet
   ],
   templateUrl: './dashboard.component.html',
-  styles: ``
+  styles: `
+  `
 })
 export default class DashboardComponent {
 
