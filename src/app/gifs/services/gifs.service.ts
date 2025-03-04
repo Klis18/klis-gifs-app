@@ -27,6 +27,7 @@ export class GifsService {
   searchHistory = signal<Record<string,Gif[]>>(loadFromLocalStorage());
   searchKeys = computed(() => Object.keys(this.searchHistory()));
 
+
   constructor() {
     this.getGifs();
   }
@@ -40,7 +41,7 @@ export class GifsService {
     this.http.get<GiphyResponse>(`${environment.giphyUrl}/gifs/trending`,{
       params:{
         api_key:environment.giphyApiKey,
-        limit: 10
+        limit: 20
       }
     }).subscribe(
       (res) =>{
@@ -55,7 +56,7 @@ export class GifsService {
       params:{
         api_key: environment.giphyApiKey,
         q: query,
-        limit: 10
+        limit: 20
       }
     }).pipe(
       map(({data}) => GifMapper.mapGiphyItemsToGifsArray(data)),

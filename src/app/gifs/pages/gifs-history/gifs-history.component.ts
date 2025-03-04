@@ -4,11 +4,15 @@ import { GifsService } from '../../services/gifs.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { GifListComponent } from "../../components/gif-list/gif-list.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'gifs-history',
   standalone: true,
-  imports: [GifListComponent],
+  imports: [
+    GifListComponent,
+    CommonModule
+  ],
   templateUrl: './gifs-history.component.html',
   styles: ``
 })

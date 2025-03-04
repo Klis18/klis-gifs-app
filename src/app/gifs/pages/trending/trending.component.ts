@@ -11,6 +11,6 @@ import { GifsService } from '../../services/gifs.service';
 })
 export default class TrendingComponent {
 
-  gifs = inject(GifsService);
+  gifService = inject(GifsService);
 
 }

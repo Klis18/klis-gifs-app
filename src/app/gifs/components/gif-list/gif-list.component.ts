@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { GifListItemComponent } from './gif-list-item/gif-list-item.component';
 import { Gif } from '../../interfaces/gif.interface';
+import { GifsService } from '../../services/gifs.service';
 
 @Component({
   selector: 'gif-list',
@@ -13,5 +14,7 @@ import { Gif } from '../../interfaces/gif.interface';
 })
 export class GifListComponent {
 
+  gifService = inject(GifsService);
+  
   images = input.required<Gif[]>();
 }
