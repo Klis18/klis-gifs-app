@@ -4,3 +4,13 @@
         {{item.itemName}}
     </a>
 }
+
+<hr class="text-neutral-500 my-4">
+<span class="text-sm text-neutral-400">Búsquedas recientes</span>
+
+@for(item of gifService.searchKeys(); track item){
+    <a [routerLink]="['/dashboard/historial',item]" routerLinkActive="bg-fuchsia-900" class="text-white px-8 py-4 mb-2 text-base block">
+        <span [class]="'fa-solid fa-clock-rotate-left'" class="text-white mr-2"></span>
+        {{item}}
+    </a>
+}

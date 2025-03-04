@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuItem } from '../../../interfaces/menu.interface';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GifsService } from '../../../services/gifs.service';
 
 @Component({
   selector: 'gifs-menu-items',
@@ -13,6 +14,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styles: ``
 })
 export class MenuItemsComponent {
+
+  gifService = inject(GifsService)
 
   public menuItems: MenuItem[] = [
     {
