@@ -1,1 +1,16 @@
-<p>search works!</p>
+<div class="py-4">
+    <span class="text-3xl">Buscador</span>
+</div>
+<hr>
+<div class="py-4 flex items-center">
+    <span class="fa-solid fa-magnifying-glass absolute pl-4 text-neutral-400"></span>
+    <input  type="text" 
+            class="w-full border-2 border-neutral-400 hover:border-fuchsia-800 rounded-full px-10 py-2 static" 
+            placeholder="Buscar..." 
+            (keyup.enter)="onSearch(searchTerm.value)" 
+            #searchTerm
+    />
+</div>
+<div class="py-4">
+    <gif-list [images]="gifSearchList()"></gif-list>
+</div>
