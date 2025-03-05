@@ -1,11 +1,11 @@
-<div class="py-4">
-    <span class="text-3xl">{{query() | titlecase}}</span>
-</div>
-<hr>
-<div class="py-4">
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        @for(url of gifsByKey(); track url){
-            <gif-list-item [imageUrl]="url.image"></gif-list-item>
-        }
+    <div class="py-4">
+        <span class="text-3xl">{{query() | titlecase}}</span>
     </div>
-</div>
+    <hr>
+    <div class="py-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            @for(url of gifsByKey(); track url){
+                <gif-list-item [imageUrl]="url.image"></gif-list-item>
+            }
+        </div>
+    </div>

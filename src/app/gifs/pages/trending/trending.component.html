@@ -1,11 +1,16 @@
-<div class="py-4">
-    <span class="text-3xl">Tendencias</span>
-</div>
-<hr>
-<div class="py-4">
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    @for(group of gifService.trendingGifGroup(); track group){
-            <gif-list [images]="group"></gif-list>
-        }
+
+<div class="h-screen overflow-y-scroll pt-5"
+(scroll)="onScroll($event)"
+#groupDiv>
+    <div class="py-4">
+        <span class="text-3xl">Tendencias</span>
+    </div>
+    <hr>
+    <div class="py-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        @for(group of gifService.trendingGifGroup(); track group){
+                <gif-list [images]="group"></gif-list>
+            }
+        </div>
     </div>
 </div>

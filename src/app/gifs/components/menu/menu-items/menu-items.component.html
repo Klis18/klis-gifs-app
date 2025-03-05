@@ -8,7 +8,7 @@
 <hr class="text-neutral-500 my-4">
 <span class="text-sm text-neutral-400">Búsquedas recientes</span>
 
-@for(item of gifService.searchKeys(); track item){
+@for(item of getRecentSearchs(); track item){
     <a [routerLink]="['/dashboard/historial',item]" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-2 mb-2 text-base block rounded-md">
         <span [class]="'fa-solid fa-clock-rotate-left'" class="text-white mr-2"></span>
         {{item}}

@@ -55,8 +55,8 @@ export class GifsService {
   }
 
   saveGifsToLocalStorage = effect(() =>{
-    const historyString = JSON.stringify(this.searchHistory());
-    localStorage.setItem(GIF_KEY, historyString);
+      const historyString = JSON.stringify(this.searchHistory());
+      localStorage.setItem(GIF_KEY, historyString);
   });
 
   getTrendingGifs(){
@@ -97,13 +97,14 @@ export class GifsService {
       map(({data}) => data ),
       map((item) => GifMapper.mapGiphyItemsToGifsArray(item)),
       tap(item =>{
-        this.searchHistory.update((history)=>({
-          ...history,
-          [query.toLocaleLowerCase()]: item
-        }));
-        this.searchGifs.update((searchGifs) => [...searchGifs, ...item]),
-        this.searchPage.update((page) => page +1);
-        this.searchGifsLoading.set(false);
+          this.searchHistory.update((history)=>({
+            ...history,
+            [query.toLocaleLowerCase()]: item
+          }));
+
+        // this.searchGifs.update((searchGifs) => [...searchGifs, ...item]),
+        // this.searchPage.update((page) => page +1);
+        // this.searchGifsLoading.set(false);
       }),
 
     );

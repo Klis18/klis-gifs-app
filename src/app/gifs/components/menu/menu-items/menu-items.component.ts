@@ -30,4 +30,10 @@ export class MenuItemsComponent {
     }
   ]
 
+  getRecentSearchs(){
+    const searchs = this.gifService.searchKeys();
+    const recentSearchs = searchs.slice(-5);
+    return recentSearchs.reverse();
+  }
+
 }
