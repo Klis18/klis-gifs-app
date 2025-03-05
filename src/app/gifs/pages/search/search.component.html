@@ -12,5 +12,9 @@
     />
 </div>
 <div class="py-4">
-    <gif-list [images]="gifSearchList()"></gif-list>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        @for(group of gifServices.searchGifsGroup(); track group){
+            <gif-list [images]="group"></gif-list>
+        }
+    </div>
 </div>

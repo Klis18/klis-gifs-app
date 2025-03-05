@@ -25,6 +25,11 @@ export class GifsService {
   trendingGifs = signal<Gif[]>([]);
   trendingGifsLoading = signal(false);
   trendingPage = signal(0);
+
+  searchGifs = signal<Gif[]>([]);
+  searchPage = signal(0);
+  searchGifsLoading = signal(false);
+
   searchHistory = signal<Record<string,Gif[]>>(loadFromLocalStorage());
   searchKeys = computed(() => Object.keys(this.searchHistory()));
 
@@ -33,6 +38,14 @@ export class GifsService {
     const groups = [];
     for(let i = 0; i <= this.trendingGifs().length; i+=3){
       groups.push(this.trendingGifs().slice(i, i+3));
+    }
+    return groups;
+  })
+
+  searchGifsGroup = computed<Gif[][]>(() =>{
+    const groups = [];
+    for(let i = 0; i <= this.searchGifs().length; i+=3){
+      groups.push(this.searchGifs().slice(i, i+3));
     }
     return groups;
   })
@@ -70,6 +83,10 @@ export class GifsService {
   }
 
   getSearchGifs(query: string){
+    if(this.searchGifsLoading()) return;
+
+    this.searchGifsLoading.set(true);
+
     return this.http.get<GiphyResponse>(`${environment.giphyUrl}/gifs/search`,{
       params:{
         api_key: environment.giphyApiKey,
@@ -77,13 +94,18 @@ export class GifsService {
         limit: 20
       }
     }).pipe(
-      map(({data}) => GifMapper.mapGiphyItemsToGifsArray(data)),
-      tap(data =>{
+      map(({data}) => data ),
+      map((item) => GifMapper.mapGiphyItemsToGifsArray(item)),
+      tap(item =>{
         this.searchHistory.update((history)=>({
           ...history,
-          [query.toLocaleLowerCase()]: data
-        }))
-      })
+          [query.toLocaleLowerCase()]: item
+        }));
+        this.searchGifs.update((searchGifs) => [...searchGifs, ...item]),
+        this.searchPage.update((page) => page +1);
+        this.searchGifsLoading.set(false);
+      }),
+
     );
   }
 

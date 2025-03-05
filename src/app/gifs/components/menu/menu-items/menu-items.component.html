@@ -1,5 +1,5 @@
 @for(item of menuItems; track item){
-    <a [routerLink]="item.route" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-4 mb-2 text-base block">
+    <a [routerLink]="item.route" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-2 mb-2 text-base block rounded-md">
         <span [class]="item.icon" class="text-white mr-2"></span>
         {{item.itemName}}
     </a>
@@ -9,7 +9,7 @@
 <span class="text-sm text-neutral-400">Búsquedas recientes</span>
 
 @for(item of gifService.searchKeys(); track item){
-    <a [routerLink]="['/dashboard/historial',item]" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-4 mb-2 text-base block">
+    <a [routerLink]="['/dashboard/historial',item]" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-2 mb-2 text-base block rounded-md">
         <span [class]="'fa-solid fa-clock-rotate-left'" class="text-white mr-2"></span>
         {{item}}
     </a>

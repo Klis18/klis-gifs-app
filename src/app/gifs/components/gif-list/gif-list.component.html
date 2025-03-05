@@ -1,5 +1,6 @@
-<div  class="grid grid-cols-3 gap-4">
+
+    <div class="grid gap-4">
     @for(url of images(); track url){
-        <gif-list-item [imageUrl]="url.image"></gif-list-item>
-    }
-</div>
+            <gif-list-item [imageUrl]="url.image"></gif-list-item>
+        }
+    </div>

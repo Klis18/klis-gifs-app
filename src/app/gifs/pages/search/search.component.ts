@@ -18,7 +18,7 @@ export default class SearchComponent {
 
 
   onSearch(searchTerm: string){
-    this.gifServices.getSearchGifs(searchTerm).subscribe(
+    this.gifServices.getSearchGifs(searchTerm)?.subscribe(
       res =>
       {
         this.gifSearchList.set(res);
