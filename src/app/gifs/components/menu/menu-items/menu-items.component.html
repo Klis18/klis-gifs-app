@@ -6,7 +6,9 @@
 }
 
 <hr class="text-neutral-500 my-4">
-<span class="text-sm text-neutral-400">Búsquedas recientes</span>
+<div class="px-2">
+    <span class="text-sm text-neutral-400">Búsquedas recientes</span>
+</div>
 
 @for(item of getRecentSearchs(); track item){
     <a [routerLink]="['/dashboard/historial',item]" routerLinkActive="bg-fuchsia-900" class="text-white px-2 py-2 mb-2 text-base block rounded-md">

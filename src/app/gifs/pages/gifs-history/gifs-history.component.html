@@ -3,7 +3,7 @@
     </div>
     <hr>
     <div class="py-4">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-4">
             @for(url of gifsByKey(); track url){
                 <gif-list-item [imageUrl]="url.image"></gif-list-item>
             }
