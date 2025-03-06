@@ -13,12 +13,8 @@
 </div>
 <div class="py-4">
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- @for(group of gifServices.searchGifsGroup(); track group){ -->
         @for(url of gifSearchList(); track url){
-
-            <!-- <gif-list [images]="group"></gif-list> -->
             <gif-list-item [imageUrl]="url.image"></gif-list-item>
-
         }
     </div>
 </div>

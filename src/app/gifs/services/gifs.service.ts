@@ -27,7 +27,6 @@ export class GifsService {
   trendingPage = signal(0);
 
   searchGifs = signal<Gif[]>([]);
-  searchPage = signal(0);
   searchGifsLoading = signal(false);
 
   searchHistory = signal<Record<string,Gif[]>>(loadFromLocalStorage());
@@ -76,7 +75,6 @@ export class GifsService {
         const gifs = GifMapper.mapGiphyItemsToGifsArray(res.data);
         this.trendingGifs.update((currentGifs) => [...currentGifs, ...gifs]);
         this.trendingPage.update((page) => page + 1);
-        // this.trendingGifs.set(gifs);
         this.trendingGifsLoading.set(false);
       }
     );
@@ -102,9 +100,8 @@ export class GifsService {
             [query.toLocaleLowerCase()]: item
           }));
 
-        // this.searchGifs.update((searchGifs) => [...searchGifs, ...item]),
-        // this.searchPage.update((page) => page +1);
-        // this.searchGifsLoading.set(false);
+        this.searchGifs.update((searchGifs) => [...searchGifs, ...item])
+        this.searchGifsLoading.set(false);
       }),
 
     );
@@ -113,4 +110,11 @@ export class GifsService {
   getHistoryGifs(query: string):Gif[]{
     return this.searchHistory()[query] ?? [];
   }
+
+  deleteHistory(){
+    localStorage.removeItem(GIF_KEY);
+    this.searchHistory.set({}); 
+
+  }
+
 }

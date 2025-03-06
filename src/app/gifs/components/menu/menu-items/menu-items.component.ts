@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MenuItem } from '../../../interfaces/menu.interface';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { GifsService } from '../../../services/gifs.service';
@@ -17,6 +17,8 @@ export class MenuItemsComponent {
 
   gifService = inject(GifsService)
 
+  recentSearchsReverse = signal<string[]>([]);
+
   public menuItems: MenuItem[] = [
     {
       icon: 'fa-solid fa-arrow-trend-up',
@@ -25,7 +27,7 @@ export class MenuItemsComponent {
     },
     {
       icon: 'fa-solid fa-magnifying-glass',
-      itemName: 'Búscador',
+      itemName: 'Buscador',
       route: '/dashboard/buscador'
     }
   ]
@@ -34,6 +36,10 @@ export class MenuItemsComponent {
     const searchs = this.gifService.searchKeys();
     const recentSearchs = searchs.slice(-5);
     return recentSearchs.reverse();
+  }
+
+  deleteHistory(){
+    this.gifService.deleteHistory();  
   }
 
 }

@@ -8,7 +8,6 @@ import { GifListItemComponent } from "../../components/gif-list/gif-list-item/gi
   selector: 'app-search',
   standalone: true,
   imports: [
-    // GifListComponent, 
     GifListItemComponent
   ],
   templateUrl: './search.component.html',
@@ -22,11 +21,11 @@ export default class SearchComponent {
 
 
   onSearch(searchTerm: string){
+    console.log('Buscando', searchTerm);
     this.gifServices.getSearchGifs(searchTerm)?.subscribe(
       res =>
       {
         this.gifSearchList.set(res);
-        // this.gifServices.searchGifs.update((searchGifs) => [...searchGifs, ...res]);
       }
     )
   }
